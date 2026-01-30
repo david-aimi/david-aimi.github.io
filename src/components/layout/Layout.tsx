@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Navigation } from './Navigation';
-import { StormBackground, RainEffect, LightningEffect } from '../effects';
+import { StormBackground, RainEffect, LightningEffect, StormAudioPlayer } from '../effects';
 
 interface LayoutProps {
   children: ReactNode;
@@ -16,6 +16,9 @@ export function Layout({ children }: LayoutProps) {
 
       {/* Navigation */}
       <Navigation />
+
+      {/* Storm Audio Player */}
+      <StormAudioPlayer />
 
       {/* Main Content */}
       <main className="relative z-20 pt-24 pb-12">

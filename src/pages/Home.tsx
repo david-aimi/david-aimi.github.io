@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Brain,
@@ -45,7 +46,15 @@ const itemVariants = {
 };
 
 export default function Home() {
-  const { isStriking } = useLightning();
+  const { isStriking, strikeCount } = useLightning();
+  const [isRevealed, setIsRevealed] = useState(false);
+
+  // After 2nd strike, reveal the face permanently
+  useEffect(() => {
+    if (strikeCount >= 2 && !isRevealed) {
+      setIsRevealed(true);
+    }
+  }, [strikeCount, isRevealed]);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -75,29 +84,85 @@ export default function Home() {
                 <span className="text-gradient-storm">David Aimi</span>
               </h1>
 
-              {/* Face image that flashes with lightning */}
-              <AnimatePresence>
-                {isStriking && (
+              {/* Face image that flashes with lightning, then stays visible after 3rd strike */}
+              {!isRevealed ? (
+                // Before reveal: flash with lightning (first 3 strikes)
+                <AnimatePresence>
+                  {isStriking && (
+                    <motion.div
+                      className="fixed left-[5%] sm:left-[10%] lg:left-[15%] top-1/3 -translate-y-1/2 z-30 pointer-events-none"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: [0, 1, 0], scale: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 1.2, times: [0, 0.3, 1], ease: 'easeInOut' }}
+                    >
+                      <div
+                        className="w-72 h-72 sm:w-96 sm:h-96 lg:w-[28rem] lg:h-[28rem] rounded-full"
+                        style={{
+                          backgroundImage: 'url(/image.jpg)',
+                          backgroundSize: 'cover',
+                          backgroundPosition: 'center',
+                          maskImage: 'radial-gradient(circle, black 30%, transparent 70%)',
+                          WebkitMaskImage: 'radial-gradient(circle, black 30%, transparent 70%)',
+                        }}
+                      />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              ) : (
+                // After reveal: permanently visible with electric shock flicker on lightning
+                <motion.div
+                  className="fixed left-[5%] sm:left-[10%] lg:left-[15%] top-1/3 -translate-y-1/2 z-30 pointer-events-none"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{
+                    opacity: isStriking ? [0.6, 1, 0.9, 1, 0.6] : 0.6,
+                    scale: isStriking ? [1, 1.02, 0.99, 1.01, 1] : 1,
+                    x: isStriking ? [0, -2, 3, -1, 2, 0] : 0,
+                    y: isStriking ? [0, 1, -2, 2, -1, 0] : 0,
+                  }}
+                  transition={{
+                    opacity: isStriking
+                      ? { duration: 0.4, times: [0, 0.2, 0.4, 0.7, 1], ease: 'easeOut' }
+                      : { duration: 0.8 },
+                    scale: isStriking
+                      ? { duration: 0.4, times: [0, 0.2, 0.4, 0.7, 1], ease: 'easeOut' }
+                      : { duration: 0.8 },
+                    x: isStriking
+                      ? { duration: 0.3, times: [0, 0.15, 0.3, 0.5, 0.75, 1], ease: 'easeOut' }
+                      : { duration: 0 },
+                    y: isStriking
+                      ? { duration: 0.3, times: [0, 0.15, 0.3, 0.5, 0.75, 1], ease: 'easeOut' }
+                      : { duration: 0 },
+                  }}
+                >
                   <motion.div
-                    className="fixed left-[5%] sm:left-[10%] lg:left-[15%] top-1/3 -translate-y-1/2 z-30 pointer-events-none"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: [0, 1, 0], scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 1.2, times: [0, 0.3, 1], ease: 'easeInOut' }}
-                  >
-                    <div
-                      className="w-72 h-72 sm:w-96 sm:h-96 lg:w-[28rem] lg:h-[28rem] rounded-full"
-                      style={{
-                        backgroundImage: 'url(/image.jpg)',
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center',
-                        maskImage: 'radial-gradient(circle, black 30%, transparent 70%)',
-                        WebkitMaskImage: 'radial-gradient(circle, black 30%, transparent 70%)',
-                      }}
-                    />
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                    className="w-72 h-72 sm:w-96 sm:h-96 lg:w-[28rem] lg:h-[28rem] rounded-full"
+                    animate={{
+                      filter: isStriking
+                        ? [
+                            'brightness(1) contrast(1) blur(0px)',
+                            'brightness(1.4) contrast(1.2) blur(1px)',
+                            'brightness(1.1) contrast(1.1) blur(0px)',
+                            'brightness(1.3) contrast(1.15) blur(0.5px)',
+                            'brightness(1) contrast(1) blur(0px)',
+                          ]
+                        : 'brightness(1) contrast(1) blur(0px)',
+                    }}
+                    transition={{
+                      filter: isStriking
+                        ? { duration: 0.4, times: [0, 0.2, 0.4, 0.7, 1], ease: 'easeOut' }
+                        : { duration: 0.3 },
+                    }}
+                    style={{
+                      backgroundImage: 'url(/image.jpg)',
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                      maskImage: 'radial-gradient(circle, black 30%, transparent 70%)',
+                      WebkitMaskImage: 'radial-gradient(circle, black 30%, transparent 70%)',
+                    }}
+                  />
+                </motion.div>
+              )}
 
               <p className="text-xl sm:text-2xl text-storm-300 max-w-2xl">
                 Principal Engineer specializing in{' '}
