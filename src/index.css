@@ -1,0 +1,374 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Storm Theme Custom Properties */
+@theme {
+  /* Storm Color Palette */
+  --color-storm-900: #0a0c10;
+  --color-storm-800: #111318;
+  --color-storm-700: #1a1d24;
+  --color-storm-600: #252a33;
+  --color-storm-500: #363d4a;
+  --color-storm-400: #4a5568;
+  --color-storm-300: #6b7a94;
+  --color-storm-200: #9aabc4;
+  --color-storm-100: #c5d3e8;
+
+  /* Lightning Blues */
+  --color-lightning-500: #0ea5e9;
+  --color-lightning-400: #38bdf8;
+  --color-lightning-300: #7dd3fc;
+  --color-lightning-glow: #38bdf8;
+
+  /* Electric Cyan */
+  --color-electric-500: #06b6d4;
+  --color-electric-400: #22d3ee;
+  --color-electric-300: #67e8f9;
+
+  /* Forest Greens */
+  --color-forest-700: #14532d;
+  --color-forest-600: #166534;
+  --color-forest-500: #22c55e;
+  --color-forest-400: #4ade80;
+  --color-forest-300: #86efac;
+
+  /* Rain Grays */
+  --color-rain-600: #374151;
+  --color-rain-500: #4b5563;
+  --color-rain-400: #6b7280;
+  --color-rain-300: #9ca3af;
+
+  /* Typography */
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+}
+
+/* Storm Animations */
+@keyframes storm-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes lightning-flash {
+  0%, 90%, 100% {
+    opacity: 0;
+  }
+  92%, 94%, 96% {
+    opacity: 0.8;
+  }
+  93%, 95% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes rain-fall {
+  0% {
+    transform: translateY(-100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(-20px);
+    opacity: 0;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(5px) rotate(-1deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(56, 189, 248, 0.6);
+  }
+}
+
+@keyframes wind-sway {
+  0%, 100% {
+    transform: rotate(-2deg) translateX(0);
+  }
+  33% {
+    transform: rotate(1deg) translateX(5px);
+  }
+  66% {
+    transform: rotate(-1deg) translateX(-3px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Animation Utilities */
+.animate-storm-pulse {
+  animation: storm-pulse 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-lightning {
+  animation: lightning-flash 8s infinite;
+}
+
+.animate-rain {
+  animation: rain-fall 1.5s linear infinite;
+}
+
+.animate-ripple {
+  animation: ripple 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-wave {
+  animation: wave 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-float {
+  animation: float 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-wind-sway {
+  animation: wind-sway 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.1), transparent);
+  background-size: 200% 100%;
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  background: rgba(17, 19, 24, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(56, 189, 248, 0.1);
+}
+
+.glass-subtle {
+  background: rgba(17, 19, 24, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(56, 189, 248, 0.08);
+}
+
+.glass-intense {
+  background: rgba(17, 19, 24, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  box-shadow:
+    0 16px 64px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(56, 189, 248, 0.15);
+}
+
+/* Text Gradient Utilities */
+.text-gradient-storm {
+  background: linear-gradient(135deg, #38bdf8, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-nature {
+  background: linear-gradient(135deg, #4ade80, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow Effects */
+.glow-lightning {
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+}
+
+.glow-electric {
+  box-shadow: 0 0 30px rgba(34, 211, 238, 0.4);
+}
+
+.glow-forest {
+  box-shadow: 0 0 30px rgba(74, 222, 128, 0.3);
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0c10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #252a33;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #363d4a;
+}
+
+/* Selection */
+::selection {
+  background: rgba(56, 189, 248, 0.3);
+  color: #c5d3e8;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* Storm Theme - Always Dark */
+:root {
+  --radius: 0.75rem;
+  /* Storm Dark Theme Colors */
+  --background: #0a0c10;
+  --foreground: #c5d3e8;
+  --card: #111318;
+  --card-foreground: #c5d3e8;
+  --popover: #111318;
+  --popover-foreground: #c5d3e8;
+  --primary: #38bdf8;
+  --primary-foreground: #0a0c10;
+  --secondary: #1a1d24;
+  --secondary-foreground: #c5d3e8;
+  --muted: #1a1d24;
+  --muted-foreground: #6b7a94;
+  --accent: #22d3ee;
+  --accent-foreground: #0a0c10;
+  --destructive: #ef4444;
+  --border: rgba(56, 189, 248, 0.15);
+  --input: rgba(56, 189, 248, 0.1);
+  --ring: #38bdf8;
+  /* Chart Colors - Storm Palette */
+  --chart-1: #38bdf8;
+  --chart-2: #22d3ee;
+  --chart-3: #4ade80;
+  --chart-4: #6b7a94;
+  --chart-5: #0ea5e9;
+  /* Sidebar */
+  --sidebar: #111318;
+  --sidebar-foreground: #c5d3e8;
+  --sidebar-primary: #38bdf8;
+  --sidebar-primary-foreground: #0a0c10;
+  --sidebar-accent: #1a1d24;
+  --sidebar-accent-foreground: #c5d3e8;
+  --sidebar-border: rgba(56, 189, 248, 0.1);
+  --sidebar-ring: #38bdf8;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background: linear-gradient(135deg, #0a0c10 0%, #111318 50%, #0a0c10 100%);
+    min-height: 100vh;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+}
