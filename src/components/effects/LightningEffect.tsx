@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLightning } from '@/contexts/LightningContext';
 
 interface LightningBolt {
   id: number;
@@ -9,6 +10,7 @@ interface LightningBolt {
 
 export function LightningEffect() {
   const [bolts, setBolts] = useState<LightningBolt[]>([]);
+  const { triggerStrike } = useLightning();
 
   const generatePath = () => {
     const segments = 5 + Math.floor(Math.random() * 3);
@@ -36,6 +38,7 @@ export function LightningEffect() {
       };
 
       setBolts((prev) => [...prev, newBolt]);
+      triggerStrike();
 
       setTimeout(() => {
         setBolts((prev) => prev.filter((b) => b.id !== newBolt.id));

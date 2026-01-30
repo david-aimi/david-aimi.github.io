@@ -54,7 +54,7 @@ const projects = [
     title: 'AI Workflow Orchestration',
     description:
       'Designed and implemented an AI workflow orchestration platform enabling non-technical users to build complex AI pipelines through a visual interface.',
-    tags: ['React', 'Python', 'LangGraph', 'PostgreSQL'],
+    tags: ['React', 'TypeScript', 'LangGraph', 'PostgreSQL'],
     metrics: { users: '500+', pipelines: '2K+', uptime: '99.9%' },
     icon: Workflow,
     color: 'lightning',

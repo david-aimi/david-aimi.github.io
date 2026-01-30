@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   Brain,
   Sparkles,
@@ -9,10 +9,12 @@ import {
   Database,
   Cloud,
   ArrowRight,
+  ChefHat,
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { GlassCard, SocialSidebar, SkillBadge } from '@/components/sections';
 import { Button } from '@/components/ui/button';
+import { useLightning } from '@/contexts/LightningContext';
 
 const skills = [
   { name: 'Claude API', level: 'expert' as const, icon: <Brain className="w-3.5 h-3.5" /> },
@@ -21,7 +23,9 @@ const skills = [
   { name: 'RAG Systems', level: 'expert' as const, icon: <Database className="w-3.5 h-3.5" /> },
   { name: 'Fine-tuning', level: 'advanced' as const, icon: <Cpu className="w-3.5 h-3.5" /> },
   { name: 'Prompt Engineering', level: 'expert' as const, icon: <MessageSquare className="w-3.5 h-3.5" /> },
-  { name: 'Python', level: 'expert' as const, icon: <Code2 className="w-3.5 h-3.5" /> },
+  { name: 'React', level: 'expert' as const, icon: <Code2 className="w-3.5 h-3.5" /> },
+  { name: 'TypeScript', level: 'expert' as const, icon: <Code2 className="w-3.5 h-3.5" /> },
+  { name: 'Angular', level: 'advanced' as const, icon: <Code2 className="w-3.5 h-3.5" /> },
   { name: 'Cloud Deploy', level: 'advanced' as const, icon: <Cloud className="w-3.5 h-3.5" /> },
 ];
 
@@ -41,6 +45,8 @@ const itemVariants = {
 };
 
 export default function Home() {
+  const { isStriking } = useLightning();
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="grid lg:grid-cols-[1fr_280px] gap-8">
@@ -69,8 +75,32 @@ export default function Home() {
                 <span className="text-gradient-storm">David Aimi</span>
               </h1>
 
+              {/* Face image that flashes with lightning */}
+              <AnimatePresence>
+                {isStriking && (
+                  <motion.div
+                    className="fixed left-[5%] sm:left-[10%] lg:left-[15%] top-1/3 -translate-y-1/2 z-30 pointer-events-none"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: [0, 1, 0], scale: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 1.2, times: [0, 0.3, 1], ease: 'easeInOut' }}
+                  >
+                    <div
+                      className="w-72 h-72 sm:w-96 sm:h-96 lg:w-[28rem] lg:h-[28rem] rounded-full"
+                      style={{
+                        backgroundImage: 'url(/image.jpg)',
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        maskImage: 'radial-gradient(circle, black 30%, transparent 70%)',
+                        WebkitMaskImage: 'radial-gradient(circle, black 30%, transparent 70%)',
+                      }}
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
               <p className="text-xl sm:text-2xl text-storm-300 max-w-2xl">
-                AI Engineer specializing in{' '}
+                Principal Engineer specializing in{' '}
                 <span className="text-lightning-400">Large Language Models</span>,{' '}
                 <span className="text-electric-400">Generative AI</span>, and{' '}
                 <span className="text-forest-400">intelligent systems</span>.
@@ -167,8 +197,8 @@ export default function Home() {
             <GlassCard variant="intense" glow="electric" className="p-8">
               <div className="flex items-start justify-between mb-6">
                 <h2 className="text-2xl font-bold text-storm-100 flex items-center gap-3">
-                  <Sparkles className="w-6 h-6 text-electric-400" />
-                  Featured Project
+                 
+                  Active Projects
                 </h2>
                 <Link
                   to="/portfolio"
@@ -179,24 +209,30 @@ export default function Home() {
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-storm-100">
-                  Enterprise RAG Pipeline
+                <h3 className="text-xl font-semibold text-storm-100 flex items-center gap-2">
+                  <ChefHat className="w-5 h-5 text-forest-400" />
+                  FlavorBase.com
                 </h3>
+                <p className="text-lg text-storm-200 font-medium">
+                  Master the Art of Flavor Pairing
+                </p>
                 <p className="text-storm-300 leading-relaxed">
-                  Built a scalable retrieval-augmented generation system processing
-                  10M+ documents with sub-second query response times. Implemented
-                  hybrid search combining semantic embeddings with keyword matching
-                  for optimal relevance.
+                  Understand flavor. Create better food. Discover scientifically-backed
+                  ingredient combinations, professional techniques, and culinary insights
+                  trusted by chefs worldwide.
+                </p>
+                 <p className="text-storm-300 leading-relaxed">
+               <a href="http://www.flavorbase.com">FlavorBase.com</a>
                 </p>
                 <div className="flex flex-wrap gap-2 pt-2">
                   <span className="px-3 py-1 text-xs rounded-full bg-lightning-400/10 text-lightning-300 border border-lightning-400/20">
-                    LangChain
+                    React
                   </span>
                   <span className="px-3 py-1 text-xs rounded-full bg-electric-400/10 text-electric-300 border border-electric-400/20">
-                    Pinecone
+                    TypeScript
                   </span>
                   <span className="px-3 py-1 text-xs rounded-full bg-forest-400/10 text-forest-300 border border-forest-400/20">
-                    Claude API
+                    Culinary AI
                   </span>
                 </div>
               </div>
