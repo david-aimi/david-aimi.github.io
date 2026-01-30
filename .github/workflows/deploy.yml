@@ -12,7 +12,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -32,12 +32,6 @@ jobs:
 
       - name: Build
         run: npm run build
-
-      - name: Copy CNAME to dist
-        run: cp CNAME dist/CNAME
-
-      - name: Copy 404 page
-        run: cp dist/index.html dist/404.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
