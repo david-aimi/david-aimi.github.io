@@ -19,8 +19,8 @@ const contactMethods = [
   {
     icon: Mail,
     title: 'Email',
-    value: 'contact@davidaimi.com',
-    href: 'mailto:contact@davidaimi.com',
+    value: 'davidaimi@gmail.com',
+    href: 'davidaimi@gmail.com',
     color: 'lightning',
   },
   {

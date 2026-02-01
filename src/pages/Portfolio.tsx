@@ -7,6 +7,10 @@ import {
   ExternalLink,
   Github,
   TrendingUp,
+  Hospital,
+  Motorbike,
+  ChefHat,
+  Utensils,
 } from 'lucide-react';
 import { GlassCard } from '@/components/sections';
 import { Badge } from '@/components/ui/badge';
@@ -18,22 +22,96 @@ import {
 import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 
 const projects = [
+   {
+    title: 'Cigna.com ',
+    description:
+      'High-impact engineering across customer and internal platforms. Key wins include architecting real-time data & analytics tools that empowered call centers with instant insights and agent performance gains; scaling and modernizing .com digital experiences; and leading front-end architecture for MyCigna mobile/web using React, TypeScript, Next.js, and modern UI stacks—delivering seamless claims access, provider search, cost tools, virtual care, and personalized health management to millions of members. These efforts boosted operational efficiency, member satisfaction, and digital platform reliability at enterprise scale.',
+    tags: [ 'AWS','Headless CMS', 'Angular','React', 'API', 'Azure Cloud'],
+    metrics: { websites: '100+', applications: '8', delivery: 'Enterprise' },
+    icon: Hospital,
+    color: 'lightning',
+    github: '#',
+    demo: 'https://www.livewire.com/bike-builder?bike=s2ap&color=glacier-silver',
+  },
+    {
+    title: 'LiveWire.com ',
+    description:
+      'Helped technical architecture, development, and successful launch of the Harley-Davidson LiveWire brand website (livewire.com) and its flagship interactive Bike Builder configurator. This project transformed how enthusiasts engage with LiveWire\'s all-electric motorcycles, delivering an immersive, seamless online experience that drives direct sales and customization.',
+    tags: [ 'AWS','Headless CMS', 'Angular','React', 'API', 'Azure Cloud'],
+    metrics: { design: 'UI & UX', portal: 'E-commerce', javascript: '3D Bike Builder' },
+    icon: Motorbike,
+    color: 'lightning',
+    github: '#',
+    demo: 'https://www.livewire.com/bike-builder?bike=s2ap&color=glacier-silver',
+  },
+  
+    {
+    title: 'FlavorBase.com',
+    description:
+      'Living Culinary Intelligence - Our AI-powered knowledge graph grows smarter with every search. Real-time learning discovers new flavor connections and continuously refines recommendations.',
+    tags: ['React', 'TypeScript', 'Vercel', 'Supabase', 'Hugging Face', 'Github Actions'],
+    metrics: { flavorpairs: '10,000+', synergies: '20K+', LLM: 'FlavorBase AI' },
+    icon: ChefHat,
+    color: 'lightning',
+    github: '#',
+    demo: '#',
+  },
+     {
+    title: 'RecipeFork.com',
+    description:
+      'AI-driven Culinary Social Media Sharing - Focused on recipe grouping and sharing with advanced recipe tooling.',
+    tags: ['React', 'TypeScript', 'Vercel', 'Supabase', 'Hugging Face', 'Github Actions'],
+    metrics: { recipes: '100k+', shares: '2M+' },
+    icon: Utensils,
+    color: 'lightning',
+    github: '#',
+    demo: '#',
+  },
+   {
+    title: 'A\&E Television',
+    description:
+      'led a team of UI engineers in architecting and delivering the JunSungKi Foundation website (junsungki.com), the digital home for Cigna Korea’s social impact initiatives. We built a modern, performant front-end with JavaScript, TypeScript, CSS, enabling rich multilingual content experiences, seamless program showcases (healthy aging, caregiver support, 50+ Awards), and intuitive navigation that amplifies the foundation’s mission of “Build Healthier Lives Together.”',
+    tags: [ 'CMS', 'JavaScript','CSS'],
+    metrics: { },
+    icon: Database,
+    color: 'lightning',
+ 
+    demo: 'https://www.livewire.com/bike-builder?bike=s2ap&color=glacier-silver',
+  },
+   {
+    title: 'Junsungki.com ',
+    description:
+      'led a team of UI engineers in architecting and delivering the JunSungKi Foundation website (junsungki.com), the digital home for Cigna Korea’s social impact initiatives. We built a modern, performant front-end with JavaScript, TypeScript, CSS, enabling rich multilingual content experiences, seamless program showcases (healthy aging, caregiver support, 50+ Awards), and intuitive navigation that amplifies the foundation’s mission of “Build Healthier Lives Together.”',
+    tags: [ 'CMS', 'JavaScript','CSS'],
+    metrics: { },
+    icon: Database,
+    color: 'lightning',
+ 
+    demo: 'https://www.livewire.com/bike-builder?bike=s2ap&color=glacier-silver',
+  },
+  
+  
+];
+
+const featured = [
+   
   {
     title: 'Enterprise RAG Pipeline',
     description:
       'Built a scalable retrieval-augmented generation system processing 10M+ documents with sub-second query response times. Implemented hybrid search combining semantic embeddings with keyword matching.',
-    tags: ['LangChain', 'Pinecone', 'Claude API', 'FastAPI'],
-    metrics: { docs: '10M+', latency: '<1s', accuracy: '94%' },
+    tags: [ 'AWS', 'Angular','React', 'Devin AI', 'Cursor','Claude Opus 4.5'],
+    metrics: { docs: '1000+', drift: '<10%', accuracy: '94-98%' },
     icon: Database,
     color: 'lightning',
     github: '#',
     demo: '#',
   },
+   
   {
     title: 'Conversational AI Agent',
     description:
       'Developed a multi-turn conversational agent with tool-use capabilities for enterprise customer support. Reduced support ticket resolution time by 60%.',
-    tags: ['GPT-4', 'Function Calling', 'Redis', 'WebSocket'],
+    tags: ['GPT-5', 'Python','LangChain','PyTorch', 'WebSocket'],
     metrics: { reduction: '60%', conversations: '100K+', satisfaction: '4.8/5' },
     icon: MessageSquare,
     color: 'electric',
@@ -44,7 +122,7 @@ const projects = [
     title: 'Custom LLM Fine-tuning',
     description:
       'Fine-tuned domain-specific models for legal document analysis. Achieved 40% improvement in accuracy over base models while reducing inference costs by 70%.',
-    tags: ['LoRA', 'PyTorch', 'Hugging Face', 'AWS SageMaker'],
+    tags: ['LoRA', 'PyTorch', 'Hugging Face', 'Vercel','Supabase', 'Qwen','Meta Llama 3.1b Instruct'],
     metrics: { accuracy: '+40%', cost: '-70%', models: '12' },
     icon: Brain,
     color: 'forest',
@@ -54,7 +132,7 @@ const projects = [
     title: 'AI Workflow Orchestration',
     description:
       'Designed and implemented an AI workflow orchestration platform enabling non-technical users to build complex AI pipelines through a visual interface.',
-    tags: ['React', 'TypeScript', 'LangGraph', 'PostgreSQL'],
+    tags: ['React', 'TypeScript', 'LangGraph', 'PostgreSQL','Cloudbees', 'Github Actions'],
     metrics: { users: '500+', pipelines: '2K+', uptime: '99.9%' },
     icon: Workflow,
     color: 'lightning',
@@ -62,7 +140,6 @@ const projects = [
     demo: '#',
   },
 ];
-
 const experienceData = [
   { year: '2020', projects: 5 },
   { year: '2021', projects: 12 },
@@ -134,7 +211,7 @@ export default function Portfolio() {
         </motion.header>
 
         {/* Growth Chart */}
-        <motion.section variants={itemVariants}>
+        {/* <motion.section variants={itemVariants}>
           <GlassCard variant="default" glow="lightning" className="p-8">
             <div className="flex items-center gap-3 mb-6">
               <TrendingUp className="w-6 h-6 text-lightning-400" />
@@ -174,7 +251,7 @@ export default function Portfolio() {
               </ResponsiveContainer>
             </ChartContainer>
           </GlassCard>
-        </motion.section>
+        </motion.section> */}
 
         {/* Projects Grid */}
         <motion.section variants={itemVariants}>
@@ -210,14 +287,6 @@ export default function Portfolio() {
                               className="text-storm-400 hover:text-storm-200 transition-colors"
                             >
                               <Github className="w-4 h-4" />
-                            </a>
-                          )}
-                          {project.demo && (
-                            <a
-                              href={project.demo}
-                              className="text-storm-400 hover:text-storm-200 transition-colors"
-                            >
-                              <ExternalLink className="w-4 h-4" />
                             </a>
                           )}
                         </div>
@@ -257,6 +326,112 @@ export default function Portfolio() {
                         </Badge>
                       ))}
                     </div>
+
+                    {/* Demo Link */}
+                    {project.demo && project.demo !== '#' && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-4 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-lightning-400/10 border border-lightning-400/30 text-lightning-300 hover:bg-lightning-400/20 hover:border-lightning-400/50 hover:text-lightning-200 transition-all group"
+                      >
+                        <span className="text-sm font-medium">View Website</span>
+                        <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      </a>
+                    )}
+                  </GlassCard>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.section>
+
+                {/* Features Grid */}
+        <motion.section variants={itemVariants}>
+          <h2 className="text-2xl font-bold text-storm-100 mb-6">
+            Featured Projects
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {featured.map((project, index) => {
+              const colors = colorClasses[project.color as keyof typeof colorClasses];
+              return (
+                <motion.div
+                  key={project.title}
+                  variants={itemVariants}
+                  custom={index}
+                >
+                  <GlassCard
+                    variant="intense"
+                    glow={colors.glow}
+                    className="h-full p-6"
+                  >
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className={`p-3 rounded-xl ${colors.bg} ${colors.border} border`}>
+                        <project.icon className={`w-6 h-6 ${colors.icon}`} />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-xl font-semibold text-storm-100 mb-1">
+                          {project.title}
+                        </h3>
+                        <div className="flex gap-2">
+                          {project.github && (
+                            <a
+                              href={project.github}
+                              className="text-storm-400 hover:text-storm-200 transition-colors"
+                            >
+                              <Github className="w-4 h-4" />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    <p className="text-storm-300 text-sm leading-relaxed mb-4">
+                      {project.description}
+                    </p>
+
+                    {/* Metrics */}
+                    <div className="grid grid-cols-3 gap-2 mb-4">
+                      {Object.entries(project.metrics).map(([key, value]) => (
+                        <div
+                          key={key}
+                          className="text-center p-2 rounded-lg bg-storm-800/50"
+                        >
+                          <div className={`text-lg font-bold ${colors.icon}`}>
+                            {value}
+                          </div>
+                          <div className="text-xs text-storm-400 capitalize">
+                            {key}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <Badge
+                          key={tag}
+                          variant="outline"
+                          className="text-xs border-storm-600 text-storm-300"
+                        >
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+
+                    {/* Demo Link */}
+                    {project.demo && project.demo !== '#' && (
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-4 flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-lightning-400/10 border border-lightning-400/30 text-lightning-300 hover:bg-lightning-400/20 hover:border-lightning-400/50 hover:text-lightning-200 transition-all group"
+                      >
+                        <span className="text-sm font-medium">View Website</span>
+                        <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      </a>
+                    )}
                   </GlassCard>
                 </motion.div>
               );
@@ -273,21 +448,24 @@ export default function Portfolio() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {[
                 'Claude API',
-                'OpenAI GPT-4',
+                'Claude Code & Opus 4.5',
+                'GPT Codex',
+                'React','Angular','TypeScript',
                 'LangChain',
                 'LlamaIndex',
                 'Pinecone',
                 'Weaviate',
                 'PyTorch',
                 'Hugging Face',
-                'FastAPI',
+                'Supabase',
                 'React',
                 'PostgreSQL',
                 'Redis',
                 'Docker',
                 'Kubernetes',
                 'AWS',
-                'GCP',
+                'Vercal',
+                'GCP','CSS','Tailwind'
               ].map((tech, index) => (
                 <motion.div
                   key={tech}

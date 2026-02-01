@@ -16,7 +16,7 @@ const socialLinks = [
   },
   {
     name: 'Email',
-    url: 'mailto:contact@davidaimi.com',
+    url: 'mailto:davidaimi@gmail.com',
     icon: Mail,
     color: 'hover:text-electric-400 hover:bg-electric-400/10',
   },

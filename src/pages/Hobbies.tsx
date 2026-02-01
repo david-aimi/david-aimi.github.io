@@ -8,10 +8,19 @@ import {
   Code,
   Plane,
   Coffee,
+  ChefHat,
 } from 'lucide-react';
 import { GlassCard } from '@/components/sections';
 
 const hobbies = [
+  {
+    title: 'Cooking',
+    description:
+      'I love everything about cooking. Cooking fascinates me because it\'s one of the few things in this world that activates all of your senses. Art, science, entertainment -- its everythign all-in-one.',
+    icon: ChefHat,
+    color: 'lightning',
+    images: ['/placeholder-photo-1.jpg', '/placeholder-photo-2.jpg'],
+  },
   {
     title: 'Photography',
     description:
@@ -20,57 +29,14 @@ const hobbies = [
     color: 'lightning',
     images: ['/placeholder-photo-1.jpg', '/placeholder-photo-2.jpg'],
   },
+ 
+  
+ 
+
   {
-    title: 'Hiking & Nature',
+    title: 'Tea Culture',
     description:
-      'Exploring trails and finding peace in nature. From local parks to mountain expeditions, nothing beats the serenity of the outdoors.',
-    icon: Mountain,
-    color: 'forest',
-    stats: { trails: '100+', miles: '500+', peaks: '15' },
-  },
-  {
-    title: 'Gaming',
-    description:
-      'Strategy games and immersive RPGs are my favorites. Currently exploring the intersection of AI and game development.',
-    icon: Gamepad2,
-    color: 'electric',
-    favorites: ['Civilization VI', 'Baldur\'s Gate 3', 'Factorio'],
-  },
-  {
-    title: 'Music',
-    description:
-      'Playing guitar and exploring electronic music production. Creating ambient soundscapes inspired by storms and nature.',
-    icon: Music,
-    color: 'lightning',
-  },
-  {
-    title: 'Reading',
-    description:
-      'Sci-fi, technical books, and philosophy. Currently reading about the future of AI and its implications for society.',
-    icon: Book,
-    color: 'electric',
-    currentRead: 'Life 3.0 by Max Tegmark',
-  },
-  {
-    title: 'Open Source',
-    description:
-      'Contributing to AI and developer tools. Building side projects that solve real problems and sharing knowledge with the community.',
-    icon: Code,
-    color: 'forest',
-    contributions: '200+',
-  },
-  {
-    title: 'Travel',
-    description:
-      'Experiencing different cultures and perspectives. Each trip brings new inspiration and ideas for both life and work.',
-    icon: Plane,
-    color: 'lightning',
-    countries: '15+',
-  },
-  {
-    title: 'Coffee Culture',
-    description:
-      'Appreciating the art of coffee. From pour-overs to espresso, exploring different beans and brewing methods.',
+      'Appreciating the art of tea. From Pu-Erh to Oolong, I haven\'t met a tea I didn\'t like.',
     icon: Coffee,
     color: 'electric',
   },
@@ -125,20 +91,11 @@ export default function Hobbies() {
             Beyond the Code
           </h1>
           <p className="text-xl text-storm-300 max-w-2xl mx-auto">
-            Life isn't just about algorithms and APIs. Here's what keeps me inspired
-            and balanced outside of work.
+            When I need a brain break from coding, AI, or technology.
           </p>
         </motion.header>
 
-        {/* Quote */}
-        <motion.div variants={itemVariants}>
-          <GlassCard variant="subtle" className="p-8 text-center">
-            <blockquote className="text-xl sm:text-2xl text-storm-200 italic">
-              "The best ideas come when you step away from the screen and let
-              your mind wander."
-            </blockquote>
-          </GlassCard>
-        </motion.div>
+      
 
         {/* Hobbies Grid */}
         <motion.section variants={itemVariants}>
