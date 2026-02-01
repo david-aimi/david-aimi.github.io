@@ -6,7 +6,6 @@ import {
   Workflow,
   ExternalLink,
   Github,
-  TrendingUp,
   Hospital,
   Motorbike,
   ChefHat,
@@ -14,12 +13,6 @@ import {
 } from 'lucide-react';
 import { GlassCard } from '@/components/sections';
 import { Badge } from '@/components/ui/badge';
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from '@/components/ui/chart';
-import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 
 const projects = [
    {
@@ -140,22 +133,6 @@ const featured = [
     demo: '#',
   },
 ];
-const experienceData = [
-  { year: '2020', projects: 5 },
-  { year: '2021', projects: 12 },
-  { year: '2022', projects: 18 },
-  { year: '2023', projects: 28 },
-  { year: '2024', projects: 42 },
-  { year: '2025', projects: 55 },
-];
-
-const chartConfig = {
-  projects: {
-    label: 'Projects',
-    color: '#38bdf8',
-  },
-};
-
 const colorClasses = {
   lightning: {
     icon: 'text-lightning-400',

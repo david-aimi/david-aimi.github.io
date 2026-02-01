@@ -1,18 +1,26 @@
 import { motion } from 'framer-motion';
 import {
   Camera,
-  Mountain,
-  Gamepad2,
-  Music,
-  Book,
-  Code,
-  Plane,
   Coffee,
   ChefHat,
+  type LucideIcon,
 } from 'lucide-react';
 import { GlassCard } from '@/components/sections';
 
-const hobbies = [
+interface Hobby {
+  title: string;
+  description: string;
+  icon: LucideIcon;
+  color: 'lightning' | 'electric' | 'forest';
+  images?: string[];
+  stats?: Record<string, string | number>;
+  favorites?: string[];
+  currentRead?: string;
+  contributions?: string | number;
+  countries?: string | number;
+}
+
+const hobbies: Hobby[] = [
   {
     title: 'Cooking',
     description:

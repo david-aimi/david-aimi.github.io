@@ -2,10 +2,8 @@ import { motion } from 'framer-motion';
 import {
   Brain,
   Code2,
-  Cloud,
   Briefcase,
   GraduationCap,
-  Heart,
   ChefHat,
   Cpu,
   Building2,
