@@ -49,7 +49,7 @@ const projects = [
     title: 'FlavorBase.com',
     description:
       'Living Culinary Intelligence - Our AI-powered knowledge graph grows smarter with every search. Real-time learning discovers new flavor connections and continuously refines recommendations.',
-    tags: ['React', 'TypeScript', 'Vercel', 'Supabase', 'Hugging Face', 'Github Actions'],
+    tags: ['React', 'TypeScript', 'Vercel', 'Supabase', 'Hugging Face', 'Github Actions', 'Clerk SSO'],
     metrics: { flavorpairs: '10,000+', synergies: '20K+', LLM: 'FlavorBase AI' },
     icon: ChefHat,
     color: 'lightning',
