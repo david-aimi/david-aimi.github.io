@@ -63,7 +63,7 @@ const projects = [
    {
     title: 'A\&E Television',
     description:
-      'Worked on the digital hub for A\&E\'s programming, full episode streaming, show schedules, and exclusive content. We built a modern, performant front-end using JavaScript, TypeScript, and CSS, enabling rich media experiences, seamless show discovery (including popular series like The First 48, Court Cam, Intervention, Storage Wars, and more), intuitive navigation, and enhanced user engagement that amplifies A\&E\'s mission of delivering thought-provoking, high-quality reality, documentary, and true crime programming.”',
+      'Worked on the digital hub for A\&E\'s programming, full episode streaming, show schedules, and exclusive content. We built a modern, performant front-end using JavaScript, TypeScript, and CSS, enabling rich media experiences, seamless show discovery (including popular series like The First 48, Court Cam, Intervention, Storage Wars, and more), intuitive navigation, and enhanced user engagement that amplifies A\&E\'s mission of delivering thought-provoking, high-quality reality, documentary, and true crime programming.',
     tags: [ 'CMS', 'JavaScript','CSS'],
     metrics: { },
     icon: Database,
